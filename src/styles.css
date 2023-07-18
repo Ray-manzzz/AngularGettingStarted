@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* RAY-NOTE Not sure how it was known where to get these links from, but these links give global access to these styling sheets */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
 div.card-header {
  font-size: large;
 }
