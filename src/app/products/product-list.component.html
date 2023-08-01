@@ -41,13 +41,51 @@
                             [style.margin.px]='imageMargin'>
                         </td>
                         <td>{{product.productName}}</td>
-                        <td>{{product.productCode | lowercase}}</td>
+                        <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency: 'GBP' : 'symbol' : '1.2-2'}}</td>
                         <td>{{product.starRating}}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="callApi()">
+                Call Api
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Filtered by: {{apiResponse?.message}}</h4>
+            </div>
+        </div>
+        <!-- <div>
+            <button class="btn btn-primary" (click)="getProduct()">
+                Get Product
+            </button>
+        </div> -->
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 Star Rating</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="testProducts">
+                    <tr *ngFor="let testProduct of testProducts">
+                        <td>{{testProduct.productName}}</td>
+                        <td>{{testProduct.productCode | lowercase}}</td>
+                        <td>{{testProduct.releaseDate}}</td>
+                        <td>{{testProduct.productPrice | currency: 'GBP' : 'symbol' : '1.2-2'}}</td>
+                        <td>{{testProduct.starRating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
         </div>
     </div>
 </div>

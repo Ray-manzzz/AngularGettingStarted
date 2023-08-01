@@ -1,5 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IProduct } from "./product";
+import { ProductService } from "../core/services/product.service";
+import { Product } from "../core/models/product";
 
 @Component({
     selector: 'pm-products',
@@ -7,12 +9,17 @@ import { IProduct } from "./product";
     styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
+
+    constructor(private productService: ProductService) {}
+
     pageTitle = 'Product List';
+    apiResponse!: any;
     imageWidth = 50;
     imageMargin = 2;
     showImage: boolean = false;
     listFilter: string = 'cart'
+    testProducts: Product[] = []
     products: IProduct[] = [
         {
             "productId": 1,
@@ -36,7 +43,27 @@ export class ProductListComponent {
         }
     ];
 
+    ngOnInit(): void {
+        this.getProduct()
+    }
+
     toggleImage() :void {
         this.showImage = !this.showImage;
+    }
+
+    callApi(): void {
+        this.productService.getOkayMessage()
+            .subscribe(response => {
+        this.apiResponse = response;
+        console.log('Received message:', this.apiResponse);
+    });
+    }
+
+    getProduct(): void {
+        this.productService.getProduct()
+            .subscribe(response => {
+        this.testProducts = response;
+        console.log('Received message:', this.testProducts);
+    });
     }
 }
