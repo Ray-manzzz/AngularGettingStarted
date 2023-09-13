@@ -82,7 +82,7 @@
                         <td>{{testProduct.productCode | lowercase}}</td>
                         <td>{{testProduct.releaseDate}}</td>
                         <td>{{testProduct.productPrice | currency: 'GBP' : 'symbol' : '1.2-2'}}</td>
-                        <td>{{testProduct.starRating}}</td>
+                        <td><pm-star [rating]="testProduct.starRating"></pm-star></td>
                     </tr>
                 </tbody>
             </table>

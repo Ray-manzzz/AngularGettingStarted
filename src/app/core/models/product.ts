@@ -6,7 +6,7 @@ export class Product
     releaseDate: string = "";
     productDescription: string = "";
     productPrice: string = "";
-    starRating: string = "";
+    starRating: number = 0;
     imageUrl: string = "";
 
 }
