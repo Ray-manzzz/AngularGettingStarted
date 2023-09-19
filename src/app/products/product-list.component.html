@@ -40,7 +40,12 @@
                             [style.width.px]='imageWidth'
                             [style.margin.px]='imageMargin'>
                         </td>
-                        <td>{{product.productName}}</td>
+                        <td>
+                            <!-- Make the name of the product an anchor tag and then pass in the product Id as a router link -->
+                            <a [routerLink]="['/products', product.productId]">
+                                {{product.productName}}
+                            </a>
+                        </td>
                         <td>{{product.productCode | lowercase | convertToSpaces: '-'}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency: 'GBP' : 'symbol' : '1.2-2'}}</td>
